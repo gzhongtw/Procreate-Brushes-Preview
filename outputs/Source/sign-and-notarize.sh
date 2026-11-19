@@ -4,7 +4,7 @@ set -euo pipefail
 : "${SIGN_IDENTITY:?Set SIGN_IDENTITY to the Developer ID Application identity}"
 : "${NOTARY_PROFILE:?Set NOTARY_PROFILE to a notarytool keychain profile}"
 release_root="$(cd "$(dirname "$0")/.." && pwd)"
-input_archive="${INPUT_ARCHIVE:-$release_root/Brushes Preview-macOS-0.2.4.zip}"
+input_archive="${INPUT_ARCHIVE:-$release_root/Brushes Preview-macOS-1.0.0.zip}"
 release_stage="$(mktemp -d -t brushes-preview-notary)"
 trap 'rm -rf "$release_stage"' EXIT
 app_bundle="$release_stage/Brushes Preview.app"
@@ -27,5 +27,5 @@ PY
 xcrun stapler staple "$app_bundle"
 xcrun stapler validate "$app_bundle"
 spctl --assess --type execute --verbose "$app_bundle"
-ditto -c -k --keepParent --norsrc "$app_bundle" "$release_root/Brushes Preview-macOS-notarized.zip"
-echo "Verified notarized release: $release_root/Brushes Preview-macOS-notarized.zip"
+ditto -c -k --keepParent --norsrc "$app_bundle" "$release_root/Brushes Preview-macOS-1.0.0-notarized.zip"
+echo "Verified notarized release: $release_root/Brushes Preview-macOS-1.0.0-notarized.zip"

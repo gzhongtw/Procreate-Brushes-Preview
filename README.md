@@ -2,9 +2,9 @@
 
 預覽 Procreate `.brush` 與 `.brushset` 的 macOS App、Quick Look 延伸功能與 Eagle 外掛。
 
-- 繁體中文。
-- macOS App：macOS 12 以上。
-- Eagle 外掛：僅支援 macOS 版。
+- macOS 12 以上；目前介面為繁體中文。
+- macOS App：1.0.0，已正式簽署並通過 Apple 公證。
+- Eagle 外掛：1.0.0，僅支援 macOS；尚待 Eagle 內建打包與安裝驗收。
 - 顯示檔案內建筆觸，不提供試畫或格式轉換。
 
 ## 專案結構
@@ -28,6 +28,6 @@ python3 outputs/Source/package-macos.py
 
 正式簽署參考 `outputs/Source/sign-and-notarize.sh`，需自行設定本機簽署憑證與公證 Keychain profile。測試請設定 `BRUSHSET_TEST_FILE`（7 支漫畫筆刷組）與 `BRUSH_TEST_FILE`（對應單支筆刷）環境變數；測試素材未隨專案散布。
 
-此為第三方工具，非 Procreate 官方產品。
+支援：hello@zon.tw。此為第三方工具，非 Procreate 官方產品。
 
 GitHub 僅提供原始碼與設計文件；Eagle 原生解析程式需先執行上述建置步驟產生。

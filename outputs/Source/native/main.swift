@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let menu = NSMenu(); let root = NSMenuItem(); menu.addItem(root)
         let sub = NSMenu(); root.submenu = sub
+        let about = NSMenuItem(title:"關於 Brushes Preview",action:#selector(NSApplication.orderFrontStandardAboutPanel(_:)),keyEquivalent:""); sub.addItem(about)
+        sub.addItem(.separator())
         let open = NSMenuItem(title:"開啟筆刷…",action:#selector(choose),keyEquivalent:"o"); open.target = self; sub.addItem(open)
         sub.addItem(NSMenuItem(title:"結束",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")); NSApp.mainMenu = menu
         if windows.isEmpty { choose() }

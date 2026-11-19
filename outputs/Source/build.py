@@ -14,7 +14,7 @@ def compile(out,files,library=False):
   part=ROOT.parent/f'work/{out.name}-{arch}';parts.append(part)
   run('xcrun','swiftc','-module-cache-path',CACHE,'-O','-target',f'{arch}-apple-macosx12.0',*(['-parse-as-library','-application-extension','-Xlinker','-e','-Xlinker','_NSExtensionMain'] if library else []),*[SRC/f for f in files],'-o',part)
  run('lipo','-create',*parts,'-output',out)
-base={'CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'zh_TW','CFBundleShortVersionString':'0.2.4','CFBundleVersion':'1','LSMinimumSystemVersion':'12.0','CFBundleSupportedPlatforms':['MacOSX']}
+base={'CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'zh_TW','CFBundleShortVersionString':'1.0.0','CFBundleVersion':'1','LSMinimumSystemVersion':'12.0','CFBundleSupportedPlatforms':['MacOSX']}
 utis=['com.procreate.brush','com.procreate.brushset']
 types=[{'UTTypeIdentifier':t,'UTTypeDescription':'Procreate '+ext,'UTTypeConformsTo':['public.data','public.archive'],'UTTypeTagSpecification':{'public.filename-extension':[ext]}} for t,ext in zip(utis,['brush','brushset'])]
 plist(APP/'Contents/Info.plist',base|{'CFBundleIdentifier':'tw.zon.BrushPreview','CFBundleExecutable':'BrushPreview','CFBundleName':'Brushes Preview','CFBundleDisplayName':'Brushes Preview','NSPrincipalClass':'NSApplication','CFBundlePackageType':'APPL','NSHighResolutionCapable':True,'UTImportedTypeDeclarations':types,'CFBundleDocumentTypes':[{'CFBundleTypeName':'Procreate Brushes','CFBundleTypeRole':'Viewer','LSHandlerRank':'Alternate','LSItemContentTypes':utis}]})
