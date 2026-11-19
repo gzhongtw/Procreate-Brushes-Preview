@@ -31,3 +31,7 @@ python3 outputs/Source/package-macos.py
 支援：hello@zon.tw。此為第三方工具，非 Procreate 官方產品。
 
 GitHub 僅提供原始碼與設計文件；Eagle 原生解析程式需先執行上述建置步驟產生。
+
+## macOS 快速鍵
+
+⌘O 開啟、⌘W 關閉視窗、⌘M 最小化、⌘H 隱藏、⌘Q 結束、⌃⌘F 全螢幕。App 與 Quick Look 共用筆觸卡片畫廊。

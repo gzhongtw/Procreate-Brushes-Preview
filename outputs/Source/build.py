@@ -14,7 +14,7 @@ def compile(out,files,library=False):
   part=ROOT.parent/f'work/{out.name}-{arch}';parts.append(part)
   run('xcrun','swiftc','-module-cache-path',CACHE,'-O','-target',f'{arch}-apple-macosx12.0',*(['-parse-as-library','-application-extension','-Xlinker','-e','-Xlinker','_NSExtensionMain'] if library else []),*[SRC/f for f in files],'-o',part)
  run('lipo','-create',*parts,'-output',out)
-base={'CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'zh_TW','CFBundleShortVersionString':'1.0.0','CFBundleVersion':'1','LSMinimumSystemVersion':'12.0','CFBundleSupportedPlatforms':['MacOSX']}
+base={'CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'zh_TW','CFBundleShortVersionString':'1.0.0','CFBundleVersion':'2','LSMinimumSystemVersion':'12.0','CFBundleSupportedPlatforms':['MacOSX']}
 utis=['com.procreate.brush','com.procreate.brushset']
 types=[{'UTTypeIdentifier':t,'UTTypeDescription':'Procreate '+ext,'UTTypeConformsTo':['public.data','public.archive'],'UTTypeTagSpecification':{'public.filename-extension':[ext]}} for t,ext in zip(utis,['brush','brushset'])]
 plist(APP/'Contents/Info.plist',base|{'CFBundleIdentifier':'tw.zon.BrushPreview','CFBundleExecutable':'BrushPreview','CFBundleName':'Brushes Preview','CFBundleDisplayName':'Brushes Preview','NSPrincipalClass':'NSApplication','CFBundlePackageType':'APPL','NSHighResolutionCapable':True,'UTImportedTypeDeclarations':types,'CFBundleDocumentTypes':[{'CFBundleTypeName':'Procreate Brushes','CFBundleTypeRole':'Viewer','LSHandlerRank':'Alternate','LSItemContentTypes':utis}]})
@@ -29,7 +29,7 @@ app_info.update(plistlib.loads(icon_info.read_bytes()))
 plist(APP/'Contents/Info.plist',app_info)
 for resource in icon_out.iterdir():
  if resource.is_file():shutil.copy2(resource,APP/'Contents/Resources'/resource.name)
-compile(APP/'Contents/MacOS/BrushPreview',['BrushCore.swift','BrushView.swift','main.swift'])
+compile(APP/'Contents/MacOS/BrushPreview',['BrushCore.swift','GalleryTemplate.swift','main.swift'])
 plist(ROOT/'Source/extension.entitlements',{'com.apple.security.app-sandbox':True,'com.apple.security.files.user-selected.read-only':True})
 for name,source,point,principal in [('Preview','Preview.swift','com.apple.quicklook.preview','PreviewProvider'),('Thumbnail','Thumbnail.swift','com.apple.quicklook.thumbnail','ThumbnailProvider')]:
  ext=APP/f'Contents/PlugIns/{name}.appex'
