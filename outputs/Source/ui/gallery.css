@@ -1,0 +1,16 @@
+@import '@astryxdesign/core/reset.css';
+@import '@astryxdesign/core/astryx.css';
+@import '@astryxdesign/theme-neutral/theme.css';
+html { color-scheme:dark; block-size:100%; }
+body { margin:0; block-size:100%; overflow:auto; overscroll-behavior:contain; }
+.gallery { inline-size:100%; max-inline-size:calc(var(--spacing-12) * 26); margin-inline:auto; padding:var(--spacing-8); }
+.brush-card { min-inline-size:0; }
+.stroke-stage { margin:0; display:flex; justify-content:center; align-items:center; inline-size:100%; aspect-ratio:3 / 1; padding:var(--spacing-3); border:0; border-radius:var(--radius-3); background:var(--color-background-body); }
+button.stroke-stage { cursor:zoom-in; }
+button.stroke-stage:hover { background:var(--color-background-muted); }
+.stroke { display:block; inline-size:100%; block-size:100%; object-fit:contain; }
+button:focus-visible { outline:var(--border-width-2, .125rem) solid var(--color-accent); outline-offset:var(--spacing-1); }
+[data-astryx-theme] { min-block-size:100%; }
+.brush-card.is-expanded { grid-column:1 / -1; }
+.brush-card.is-expanded .stroke-stage { aspect-ratio:4 / 1; cursor:zoom-out; }
+@media (max-width:40rem) { .gallery { padding:var(--spacing-5); } }

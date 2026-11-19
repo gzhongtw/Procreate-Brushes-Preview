@@ -1,0 +1,14 @@
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import fs from 'node:fs';
+import path from 'node:path';
+const here=path.dirname(new URL(import.meta.url).pathname), root=path.resolve(here,'../../..');
+const out=path.join(root,'work/ui-build');fs.mkdirSync(out,{recursive:true});
+await build({entryPoints:[path.join(here,'gallery.jsx')],bundle:true,platform:'node',format:'cjs',outfile:path.join(out,'templates.cjs'),external:['react','react-dom/server'],loader:{'.css':'empty'}});
+await build({entryPoints:[path.join(here,'gallery.css')],bundle:true,minify:true,outfile:path.join(out,'gallery.css')});
+const require=createRequire(import.meta.url);const {templates}=require(path.join(out,'templates.cjs'));
+const css=fs.readFileSync(path.join(out,'gallery.css'),'utf8');
+const assets={...templates,css};
+fs.writeFileSync(path.join(root,'outputs/BrushPreview.eagleplugin-src/viewer/gallery.json'),JSON.stringify(assets));
+fs.writeFileSync(path.join(here,'gallery.json'),JSON.stringify(assets));
+console.log('Astryx gallery templates and CSS built');

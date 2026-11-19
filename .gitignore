@@ -1,0 +1,9 @@
+node_modules/
+work/
+.DS_Store
+*.app/
+.env*
+*.p12
+*.p8
+*.mobileprovision
+outputs/BrushPreview.eagleplugin-src/bin/

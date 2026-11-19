@@ -29,3 +29,5 @@ python3 outputs/Source/package-macos.py
 正式簽署參考 `outputs/Source/sign-and-notarize.sh`，需自行設定本機簽署憑證與公證 Keychain profile。測試請設定 `BRUSHSET_TEST_FILE`（7 支漫畫筆刷組）與 `BRUSH_TEST_FILE`（對應單支筆刷）環境變數；測試素材未隨專案散布。
 
 支援：hello@zon.tw。此為第三方工具，非 Procreate 官方產品。
+
+GitHub 僅提供原始碼與設計文件；Eagle 原生解析程式需先執行上述建置步驟產生。

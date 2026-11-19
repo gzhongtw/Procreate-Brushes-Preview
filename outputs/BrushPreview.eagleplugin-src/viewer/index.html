@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>筆刷預覽</title></head><body><p id="status" role="status">正在讀取筆刷…</p><script>
+(async()=>{
+ const status=document.getElementById('status');
+ try {
+  const {render,css}=require('./render');
+  const style=document.createElement('style');style.textContent=css;document.head.append(style);
+  const filePath=new URLSearchParams(location.search).get('path');
+  const doc=await require('../lib/bridge').inspect(filePath);
+  document.title=doc.name+' · 筆刷預覽';
+  status.insertAdjacentHTML('afterend',render(doc));status.remove();
+  for(const button of document.querySelectorAll('[data-brush-zoom]')) {
+   button.setAttribute('aria-pressed','false');
+   button.addEventListener('click',()=>{
+    const card=button.closest('.brush-card');const expanded=card.classList.toggle('is-expanded');
+    button.setAttribute('aria-pressed',String(expanded));
+    button.setAttribute('aria-label',(expanded?'縮小 ':'放大 ')+button.querySelector('img').alt);
+   });
+  }
+ } catch(error){status.textContent='無法預覽：'+error.message;}
+})();
+</script></body></html>

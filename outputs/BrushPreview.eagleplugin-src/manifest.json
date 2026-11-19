@@ -1,0 +1,26 @@
+{
+  "id": "75bef597-a222-418f-9377-4d4b922afa38",
+  "version": "1.0.0",
+  "platform": "mac",
+  "arch": "all",
+  "name": "Procreate Brushes Preview",
+  "logo": "/logo.png",
+  "keywords": [
+    "brushset",
+    "brush",
+    "Procreate"
+  ],
+  "devTools": false,
+  "preview": {
+    "brushset,brush": {
+      "thumbnail": {
+        "path": "thumbnail.js",
+        "size": 800
+      },
+      "viewer": {
+        "path": "viewer/index.html",
+        "allowZoom": false
+      }
+    }
+  }
+}
