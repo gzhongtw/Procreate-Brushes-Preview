@@ -30,8 +30,13 @@ python3 outputs/Source/package-macos.py
 
 支援：hello@zon.tw。此為第三方工具，非 Procreate 官方產品。
 
-GitHub 僅提供原始碼與設計文件；Eagle 原生解析程式需先執行上述建置步驟產生。
+Git 儲存庫提供原始碼與設計文件；Eagle 原生解析程式需先建置。安裝包由 Releases 提供（目前草稿尚待更新，請勿將舊版附件當作最新 v1.0.0）。
 
 ## macOS 快速鍵
 
 ⌘O 開啟、⌘W 關閉視窗、⌘M 最小化、⌘H 隱藏、⌘Q 結束、⌃⌘F 全螢幕。App 與 Quick Look 共用筆觸卡片畫廊。
+
+## 發行資訊
+
+目前版本維持 v1.0.0（Build 2），已修正 App 與 Quick Look 顯示不一致並加入快速鍵。
+發行說明與 SHA-256 見 [docs/releases/v1.0.0](docs/releases/v1.0.0)。macOS 發行檔名統一為 `Brushes Preview-macOS-v1.0.0.zip`。
